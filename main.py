@@ -46,7 +46,8 @@ print("DEBUG - Admin IDs:", ADMIN_IDS)
 # --- WORKING HOURS CHECK ---
 def is_within_working_hours():
     """Check if current time is within working hours (8 AM - 8 PM LT)"""
-    current_hour = datetime.now().hour
+    ethiopia_tz = pytz.timezone('Africa/Addis_Ababa')
+    current_hour = datetime.now(ethiopia_tz).hour
     return WORKING_HOURS_START <= current_hour < WORKING_HOURS_END
 
 async def working_hours_gate(update: Update, context: ContextTypes.DEFAULT_TYPE):
